@@ -34,6 +34,7 @@ jobs:
           export enable_ccache=on
         fi
         curl -L https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-macOS-Release-x64.zip --output skia.zip
+        curl -L https://github.com/blueloveTH/aseprite/releases/download/v0.01/libcrypto-1_1-x64.dll --output libcrypto-1_1-x64.dll
         unzip skia.zip
         cmake -S . -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
