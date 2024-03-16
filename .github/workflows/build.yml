@@ -4,29 +4,5 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
-    - name: ccache
-      uses: hendrikmuhs/ccache-action@v1
-      with:
-        key: macos-latest-on-RelWithDebInfo
-    - uses: turtlesec-no/get-ninja@main
-    - name: Generating Makefiles
-      shell: bash
-      run: |
-        cmake -S . -B build -G Ninja \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
-          -DENABLE_TESTS=ON \
-          -DENABLE_UI=ON \
-          -DENABLE_CCACHE=ON
-    - name: Compiling
-      shell: bash
-      run: |
-        cd build && ninja
-    - name: Upload build
-      uses: actions/upload-artifact@v3
-      with:
-        name: aseprite
-        path: build/*
+    - name: Print system info
+      run: uname -m
