@@ -25,3 +25,8 @@ jobs:
       shell: bash
       run: |
         cd build && ninja
+    - name: Upload build
+      uses: actions/upload-artifact@v3
+      with:
+        name: aseprite
+        path: build/*
